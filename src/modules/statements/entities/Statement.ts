@@ -13,6 +13,8 @@ import { User } from '../../users/entities/User';
 enum OperationType {
   DEPOSIT = 'deposit',
   WITHDRAW = 'withdraw',
+  TRANSFERIN = 'transferIN',
+  TRANSFEROUT = 'transferOUT',
 }
 
 @Entity('statements')
@@ -28,7 +30,7 @@ export class Statement {
   user: User;
 
   @Column()
-  sender_id: string;
+  sender_id: string | null;
 
   @Column()
   description: string;
