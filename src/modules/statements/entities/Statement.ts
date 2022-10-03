@@ -29,7 +29,7 @@ export class Statement {
   @JoinColumn({ name: 'user_id' })
   user: User;
 
-  @Column()
+  @Column({ type: 'text', nullable: true })
   sender_id: string | null;
 
   @Column()

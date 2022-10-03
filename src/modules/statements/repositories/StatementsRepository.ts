@@ -20,6 +20,7 @@ export class StatementsRepository implements IStatementsRepository {
     description,
     type
   }: ICreateStatementDTO): Promise<Statement> {
+
     const statement = this.repository.create({
       user_id,
       sender_id,

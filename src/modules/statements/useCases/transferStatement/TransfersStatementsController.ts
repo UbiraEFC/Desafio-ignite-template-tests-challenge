@@ -5,8 +5,10 @@ import { TransfersStatementsUseCase } from './TransfersStatementsUseCase';
 
 
 enum OperationType {
-	TRANSFERIN = 'transferIN',
-	TRANSFEROUT = 'transferOUT',
+  DEPOSIT = 'deposit',
+  WITHDRAW = 'withdraw',
+  TRANSFERIN = 'transferIN',
+  TRANSFEROUT = 'transferOUT',
 }
 
 class TransfersStatementsController {
@@ -15,12 +17,15 @@ class TransfersStatementsController {
 		const { amount, description } = request.body;
 		const { id: sender_id } = request.params;
 
+		const type1 = "transferIN";
+		const type2 = "transferOUT";
+
 		const transferStatement = container.resolve(TransfersStatementsUseCase);
 
 		const sent = await transferStatement.execute({
 			user_id,
 			sender_id,
-			type: 'transferOUT' as OperationType,
+			type: type1 as OperationType,
 			amount,
 			description
 		});
@@ -28,7 +33,7 @@ class TransfersStatementsController {
 		const received = await transferStatement.execute({
 			user_id: sender_id,
 			sender_id: user_id,
-			type: 'transferIN' as OperationType,
+			type: type2 as OperationType,
 			amount,
 			description
 		});

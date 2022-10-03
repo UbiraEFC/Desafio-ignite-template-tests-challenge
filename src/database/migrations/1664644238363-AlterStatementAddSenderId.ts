@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, TableColumn} from "typeorm";
+import {MigrationInterface, QueryRunner, TableColumn, TableForeignKey} from "typeorm";
 
 export class AlterStatementAddSenderId1664644238363 implements MigrationInterface {
 
@@ -9,6 +9,16 @@ export class AlterStatementAddSenderId1664644238363 implements MigrationInterfac
                 name: "sender_id",
                 type: "uuid",
                 isNullable: true,
+            })
+        );
+
+        await queryRunner.createForeignKey(
+            "statements",
+            new TableForeignKey({
+                columnNames: ["sender_id"],
+                referencedColumnNames: ["id"],
+                referencedTableName: "users",
+                onDelete: "CASCADE",
             })
         );
     }

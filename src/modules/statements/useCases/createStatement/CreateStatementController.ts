@@ -6,6 +6,8 @@ import { CreateStatementUseCase } from './CreateStatementUseCase';
 enum OperationType {
   DEPOSIT = 'deposit',
   WITHDRAW = 'withdraw',
+  TRANSFERIN = 'transferIN',
+  TRANSFEROUT = 'transferOUT',
 }
 
 class CreateStatementController {
@@ -20,6 +22,7 @@ class CreateStatementController {
 
     const statement = await createStatement.execute({
       user_id,
+      sender_id: null,
       type,
       amount,
       description
