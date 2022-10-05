@@ -7,24 +7,23 @@ import { TransfersStatementsUseCase } from './TransfersStatementsUseCase';
 
 class TransfersStatementsController {
 	async execute(request: Request, response: Response) {
-		const { id: user_id } = request.user;
+		const { id: sender_id } = request.user;
 		const { amount, description } = request.body;
-		const { id: sender_id } = request.params;
-		const type = 'transfer' as OperationType; 
-		
+		const { user_id } = request.params;
+		const type = OperationType.TRANSFER;
+
 		const transferStatement = container.resolve(TransfersStatementsUseCase);
 
-		const sent = await transferStatement.execute({
+
+
+		return response.status(201).json(await transferStatement.execute({
 			user_id,
 			sender_id,
 			type,
 			amount,
 			description
-		});
-
-		return response.status(201).json({ 
-			sent,
-		 });
+		})
+		);
 	}
 }
 

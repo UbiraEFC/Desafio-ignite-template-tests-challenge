@@ -28,8 +28,8 @@ export class Statement {
   @JoinColumn({ name: 'user_id' })
   user: User;
 
-  @Column({ type: 'text', nullable: true })
-  sender_id: string | null;
+  @Column()
+  sender_id?: string;
 
   @Column()
   description: string;

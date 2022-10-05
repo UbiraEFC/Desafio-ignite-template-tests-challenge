@@ -10,8 +10,8 @@ interface IRequest {
 }
 
 interface IResponse {
-  statement: Statement[];
   balance: number;
+  statement: Statement[];
 }
 
 @injectable()

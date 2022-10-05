@@ -4,8 +4,6 @@ import { OperationType } from '../../entities/Statement';
 
 import { CreateStatementUseCase } from './CreateStatementUseCase';
 
-
-
 class CreateStatementController {
   async execute(request: Request, response: Response) {
     const { id: user_id } = request.user;
@@ -18,7 +16,6 @@ class CreateStatementController {
 
     const statement = await createStatement.execute({
       user_id,
-      sender_id: null,
       type,
       amount,
       description
