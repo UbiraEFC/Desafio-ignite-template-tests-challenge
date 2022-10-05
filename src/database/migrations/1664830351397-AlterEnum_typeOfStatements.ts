@@ -9,7 +9,7 @@ export class AlterEnumTypeOfStatements1664830351397 implements MigrationInterfac
             new TableColumn({
                 name: "type",
                 type: "enum",
-                enum: ["deposit", "withdraw", "transferIN","transferOUT",],
+                enum: ["deposit", "withdraw", "transfer"],
             })
         );
     }

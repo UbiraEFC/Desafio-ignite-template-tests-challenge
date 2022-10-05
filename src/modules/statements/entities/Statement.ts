@@ -10,11 +10,10 @@ import { v4 as uuid } from 'uuid';
 
 import { User } from '../../users/entities/User';
 
-enum OperationType {
+export enum OperationType {
   DEPOSIT = 'deposit',
   WITHDRAW = 'withdraw',
-  TRANSFERIN = 'transferIN',
-  TRANSFEROUT = 'transferOUT',
+  TRANSFER = 'transfer',
 }
 
 @Entity('statements')
