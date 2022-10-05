@@ -23,6 +23,15 @@ através do tipo de transação "transfer";
 
 - Rota para enviar tranferência: /api/v1/statements/transfers/:user_id
 
+- As informações para realizar uma transferência serão:
+    
+    ```json
+    {
+    	"amount": 100,
+    	"description": "Descrição da transferência"
+    }
+    ```
+
 - O id do usuário destinatário será recebido via parâmetro da rota e o id do usuário remetente poderá ser obtido através do token JWT enviado no header da requisição;
 
 - Ao mostrar o balance de um usuário, operações do tipo "transfer" deverão possuir os seguintes campos:
@@ -38,5 +47,5 @@ através do tipo de transação "transfer";
   }
   ```
   
-Observe o campo sender_id. Esse deverá ser o id do usuário que enviou a transferência.
-O campo type também deverá exibir o tipo da operação, que nesse caso é transfer.
+Observe o campo 'sender_id'. Esse deverá ser o id do usuário que enviou a transferência.
+O campo 'type' também deverá exibir o tipo da operação, que nesse caso é 'transfer'.
