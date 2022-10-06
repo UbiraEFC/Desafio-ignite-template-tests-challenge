@@ -4,7 +4,7 @@ import { InMemoryStatementsRepository } from "../../repositories/in-memory/InMem
 import { CreateStatementUseCase } from "../createStatement/CreateStatementUseCase";
 import { CreateUserUseCase } from "../../../users/useCases/createUser/CreateUserUseCase";
 
-import { OperationType } from "../createStatement/CreateStatementController"
+import { OperationType } from '../../entities/Statement';
 import { AppError } from "../../../../shared/errors/AppError";
 
 let inMemoryStatementsRepository: InMemoryStatementsRepository;
