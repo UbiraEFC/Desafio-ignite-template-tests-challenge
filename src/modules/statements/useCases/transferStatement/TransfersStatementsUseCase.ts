@@ -20,15 +20,14 @@ export class TransfersStatementsUseCase {
     const user = await this.usersRepository.findById(user_id);
     const sender = await this.usersRepository.findById(String(sender_id));
 
-    if(user_id === sender_id) {
-      throw new TransfersStatementsError.InvalidTransferOperation();
-    }
-
     if (!user) {
       throw new TransfersStatementsError.UserNotFound();
     }
     if (!sender) {
       throw new TransfersStatementsError.SenderNotFound();
+    }
+    if(user_id === sender_id) {
+      throw new TransfersStatementsError.InvalidTransferOperation();
     }
     const { balance } = await this.statementsRepository.getUserBalance({ user_id: String(sender_id) });
 
@@ -44,7 +43,7 @@ export class TransfersStatementsUseCase {
       amount,
       description: `Tranfered ${amount} to ${user.name}`
     });
-    
+
     const statementOperation = await this.statementsRepository.create({
       user_id,
       sender_id,
