@@ -18,4 +18,10 @@ export namespace TransfersStatementsError {
       super('Insufficient funds', 400);
     }
   }
+
+  export class InvalidTransferOperation extends AppError {
+    constructor() {
+      super('Invalid transfer operation', 400);
+    }
+  }
 }

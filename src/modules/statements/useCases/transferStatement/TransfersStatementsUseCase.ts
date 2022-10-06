@@ -20,6 +20,10 @@ export class TransfersStatementsUseCase {
     const user = await this.usersRepository.findById(user_id);
     const sender = await this.usersRepository.findById(String(sender_id));
 
+    if(user_id === sender_id) {
+      throw new TransfersStatementsError.InvalidTransferOperation();
+    }
+
     if (!user) {
       throw new TransfersStatementsError.UserNotFound();
     }
