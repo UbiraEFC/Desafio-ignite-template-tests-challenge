@@ -26,6 +26,9 @@ export class TransfersStatementsUseCase {
     if (!sender) {
       throw new TransfersStatementsError.SenderNotFound();
     }
+    if(user_id === sender_id) {
+      throw new TransfersStatementsError.InvalidTransferOperation();
+    }
     const { balance } = await this.statementsRepository.getUserBalance({ user_id: String(sender_id) });
 
     if (balance < amount) {
@@ -40,7 +43,7 @@ export class TransfersStatementsUseCase {
       amount,
       description: `Tranfered ${amount} to ${user.name}`
     });
-    
+
     const statementOperation = await this.statementsRepository.create({
       user_id,
       sender_id,
